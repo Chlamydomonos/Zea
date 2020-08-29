@@ -39,14 +39,20 @@ public class CreateZea : MonoBehaviour
                 float yTemp = (float) (i - (rows / 2)) * 0.6F;
                 float zTemp = (float) (Math.Sin(angle * j) * radius);
 
+                float xScale = (float) random.Next(950, 1050) / 1000.0F;
+                float yScale = (float) random.Next(950, 1050) / 1000.0F;
+                float zScale = (float) random.Next(950, 1050) / 1000.0F;
+
                 Vector3 pos = new Vector3(xTemp, yTemp, zTemp);
                 Vector3 rot = new Vector3(0, (float) (angle * 180.0D * j / Math.PI), 90);
+                Vector3 scale = new Vector3(xScale, yScale, zScale);
 
                 GameObject generated = Instantiate(kernel);
 
                 generated.transform.position = pos;
                 generated.transform.rotation = Quaternion.Euler(rot);
                 generated.transform.parent = self.transform;
+                generated.transform.localScale = scale;
 
                 int color = randomColor(colorType);
 
